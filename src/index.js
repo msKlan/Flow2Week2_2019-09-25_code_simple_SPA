@@ -14,15 +14,18 @@ import jokes from "./jokes";
 // }
 // window.addJoke = addJoke;
 
-  document.getElementById("myButt").addEventListener("click", myGetRemoteJoke);
+  document.getElementById("myButt").addEventListener("click", GetRemoteJoke);
 
-   async function GetRemoteJoke() {
-       let response = await fetch('https://studypoints.info/jokes/api/jokes/period/hour');
-       let data = await response.json();
-       return data;
+    function GetRemoteJoke() {
+       fetch('https://studypoints.info/jokes/api/jokes/period/hour')
+       .then
+       ((response) => {return response.json()})
+       .then
+       (((data) => document.getElementById("myDiv").innerHTML = data.joke));
+       ;
    }
 
-  function myGetRemoteJoke() {
+  /* function myGetRemoteJoke() {
     alert("1");
     GetRemoteJoke().then(data => document.getElementById("myDiv").innerHTML = JSON.stringify(data));
-  }
+  } */
